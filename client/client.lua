@@ -1,13 +1,13 @@
-RegisterNetEvent('TimeAndDateDisplay-FiveM')
-AddEventHandler('TimeAndDateDisplay-FiveM', function(time)
-    if Config.ShowServerName and Config.ServerName then
-        time = time .." | © " .. Config.ServerName
+RegisterNetEvent('TimeAndDateDisplay-JRP')
+AddEventHandler('TimeAndDateDisplay-JRP', function(time)
+    if Config.Cached.ShowServerName and Config.Cached.ServerName then
+        time = time .." | " .. Config.Cached.ServerName
     end
-    if Config.ShowPlayerName then
-        time = time .."\nPlayer Name: " .. GetPlayerName(NetworkGetEntityOwner(PlayerPedId()))
+    if Config.Cached.ShowPlayerName then
+        time = time .."\nPlayer Name: " .. GetPlayerName(PlayerId())
     end
-    if Config.ShowPlayerID then
-        time = time .."\nPlayer ID: " .. GetPlayerServerId(NetworkGetEntityOwner(PlayerPedId()))
+    if Config.Cached.ShowPlayerID then
+        time = time .."\nPlayer ID: " .. GetPlayerServerId(PlayerId())
     end
     SendNUIMessage({
         action = "setTimeAndDate",

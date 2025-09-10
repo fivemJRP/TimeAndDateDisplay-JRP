@@ -33,19 +33,23 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        TriggerClientEvent('TimeAndDateDisplay-FiveM', -1, getTime())
-        Wait(30000)
+        Citizen.Wait(60000)  -- Sync time every 60 seconds to reduce network overhead
+        -- Get server time with offset
+        local time = os.date("%d-%m-%Y %H:%M", os.time() + (Config.TimezoneOffset * 3600))
+        -- Send to all clients
+        TriggerClientEvent('TimeAndDateDisplay-JRP', -1, time)
+        print("[TimeAndDateDisplay-JRP] Time synced at " .. time)
     end
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
     if (GetCurrentResourceName() == resourceName) then
         Wait(2500)
-        TriggerClientEvent('TimeAndDateDisplay-FiveM', -1, getTime())
+        TriggerClientEvent('TimeAndDateDisplay-JRP', -1, getTime())
     end
 end)
   
 
 AddEventHandler("playerJoining", function (data)
-    TriggerClientEvent('TimeAndDateDisplay-FiveM', source, getTime())
+    TriggerClientEvent('TimeAndDateDisplay-JRP', source, getTime())
 end)

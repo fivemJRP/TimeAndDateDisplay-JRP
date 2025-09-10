@@ -1,30 +1,77 @@
+-- TimeAndDateDisplay Config for JRP Server
+-- Powered by JGN Network - Join the ultimate gaming experience!
+-- Visit JGN Network for more FiveM scripts and community events.
+-- Server: JRP - Roleplay your way in our immersive world.
+
 Config = {}
 
-Config.ShowServerName = true -- Set true to show the given Config.ServerName below
+-- Display Options
+Config.ShowServerName = true  -- Enable to display the server name
+Config.ServerName = "JRP"     -- Server name to show (e.g., "JRP")
 
-Config.ServerName = "Server Name" -- Shows this name if Config.ShowServerName = true
+Config.ShowPlayerName = false -- Enable to display the player's name
+Config.ShowPlayerID = false   -- Enable to display the player's server ID
 
-Config.ShowPlayerName = false -- Set true to show to player name
+-- Time Display Mode (Choose ONE)
+Config.ShowDateAndTime = true -- Show both date and time
+Config.ShowOnlyDate = false   -- Show only the date
+Config.ShowOnlyTime = false   -- Show only the time
 
-Config.ShowPlayerID = false -- Set True to show to player id
+-- Date Format (Choose ONE)
+Config.DayMonthYear = false   -- Format: DD-MM-YYYY
+Config.MonthDayYear = true    -- Format: MM-DD-YYYY (USA style)
+Config.YearMonthDay = false   -- Format: YYYY-MM-DD
+Config.YearDayMonth = false   -- Format: YYYY-DD-MM
 
--- One of the following config things below must be set to true
+-- Timezone Adjustment
+Config.TimezoneOffset = 0     -- Offset in hours (e.g., -1 for EST, +1 for CET)
+-- Note: Adjust based on your server's location for accurate display.
 
-Config.ShowDateAndTime = true -- Set true to show Date and Time
+-- Validation Function (Do not modify)
+function Config.Validate()
+    local dateOptions = {Config.DayMonthYear, Config.MonthDayYear, Config.YearMonthDay, Config.YearDayMonth}
+    local trueCount = 0
+    for _, v in ipairs(dateOptions) do
+        if v then trueCount = trueCount + 1 end
+    end
+    if trueCount ~= 1 then
+        print("[TimeAndDateDisplay-JRP] Warning: Exactly one date format must be true. Defaulting to MonthDayYear.")
+        Config.DayMonthYear = false
+        Config.MonthDayYear = true
+        Config.YearMonthDay = false
+        Config.YearDayMonth = false
+    end
 
-Config.ShowOnlyDate = false -- Set true to show only the Date
+    local timeOptions = {Config.ShowDateAndTime, Config.ShowOnlyDate, Config.ShowOnlyTime}
+    trueCount = 0
+    for _, v in ipairs(timeOptions) do
+        if v then trueCount = trueCount + 1 end
+    end
+    if trueCount ~= 1 then
+        print("[TimeAndDateDisplay-JRP] Warning: Exactly one time display option must be true. Defaulting to ShowDateAndTime.")
+        Config.ShowDateAndTime = true
+        Config.ShowOnlyDate = false
+        Config.ShowOnlyTime = false
+    end
+end
 
-Config.ShowOnlyTime = false -- Set true to show only the Time
+-- Cached Config Values (Do not modify)
+Config.Cached = {
+    ShowServerName = Config.ShowServerName,
+    ServerName = Config.ServerName,
+    ShowPlayerName = Config.ShowPlayerName,
+    ShowPlayerID = Config.ShowPlayerID,
+    ShowDateAndTime = Config.ShowDateAndTime,
+    ShowOnlyDate = Config.ShowOnlyDate,
+    ShowOnlyTime = Config.ShowOnlyTime,
+    DayMonthYear = Config.DayMonthYear,
+    MonthDayYear = Config.MonthDayYear,
+    YearMonthDay = Config.YearMonthDay,
+    YearDayMonth = Config.YearDayMonth,
+    TimezoneOffset = Config.TimezoneOffset
+}
 
--- One of the following config things below must be set to true
+-- Run Validation
+Config.Validate()
 
-Config.DayMonthYear = true -- Set true to have DD-MM-YYYY
-
-Config.MonthDayYear = false -- Set true to have MM-DD-YYYY
-
-Config.YearMonthDay = false -- Set true to have YYYY-MM-DD
-
-Config.YearDayMonth = false -- Set true to have YYYY-DD-MM
-
-Config.TimezoneOffset = 0 -- set this to the offset you need. 
---example -1 will make the time 1 hour earlier and 1 will make the time one hour later.
+-- Shameless Plug: Check out JGN Network for top-tier FiveM resources and join JRP for epic roleplay!

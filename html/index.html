@@ -7,11 +7,32 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Modern, clean font */
+            color: #ffffff; /* White text with slight blue tint for coolness */
+            background: transparent; /* Transparent background to avoid gameplay interference */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for depth */
+            border-radius: 10px; /* Rounded corners */
+            padding: 10px;
+            animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+        }
+
         h1 {
             color: white;
             font-size: 20px;
             text-align: right;
             font-weight: 900;
+        }
+
+        #timeDisplay {
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease; /* Smooth transitions */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
