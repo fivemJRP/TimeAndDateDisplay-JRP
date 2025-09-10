@@ -1,34 +1,43 @@
--- TimeAndDateDisplay Config for JRP Server
--- Powered by JGN Network - Join the ultimate gaming experience!
--- Visit JGN Network for more FiveM scripts and community events.
--- Server: JRP - Roleplay your way in our immersive world.
+-- TimeAndDateDisplay-JRP Config File
+-- This script displays real-life time and date in FiveM, optimized for performance and customization.
+-- Powered by JGN Network - The ultimate hub for FiveM scripts, servers, and community events!
+-- Join JRP Server for immersive roleplay experiences. Visit JusticeRP.xyz for more info.
+-- Forked and enhanced from the original TimeAndDateDisplay-FiveM for JRP-specific features.
 
 Config = {}
 
--- Display Options
-Config.ShowServerName = true  -- Enable to display the server name
-Config.ServerName = "JRP"     -- Server name to show (e.g., "JRP")
+-- Display Options Section
+-- These settings control what information is shown in the time display HUD.
+Config.ShowServerName = true  -- Set to true to append the server name (e.g., "JRP") to the time string.
+Config.ServerName = "JRP"     -- The name of your server to display. Customize this for branding!
 
-Config.ShowPlayerName = false -- Enable to display the player's name
-Config.ShowPlayerID = false   -- Enable to display the player's server ID
+Config.ShowPlayerName = false -- Set to true to show the player's in-game name below the time.
+Config.ShowPlayerID = false   -- Set to true to show the player's server ID below the time.
 
--- Time Display Mode (Choose ONE)
-Config.ShowDateAndTime = true -- Show both date and time
-Config.ShowOnlyDate = false   -- Show only the date
-Config.ShowOnlyTime = false   -- Show only the time
+-- Time Display Mode Section
+-- Choose exactly ONE of these options to control what is displayed (date, time, or both).
+-- The script validates this to ensure only one is active.
+Config.ShowDateAndTime = true -- Displays both date and time (e.g., "12-25-2023 14:30").
+Config.ShowOnlyDate = false   -- Displays only the date (e.g., "12-25-2023").
+Config.ShowOnlyTime = false   -- Displays only the time (e.g., "14:30").
 
--- Date Format (Choose ONE)
-Config.DayMonthYear = false   -- Format: DD-MM-YYYY
-Config.MonthDayYear = true    -- Format: MM-DD-YYYY (USA style)
-Config.YearMonthDay = false   -- Format: YYYY-MM-DD
-Config.YearDayMonth = false   -- Format: YYYY-DD-MM
+-- Date Format Section
+-- Choose exactly ONE date format. The script defaults to MM-DD-YYYY if invalid.
+Config.DayMonthYear = false   -- European style: DD-MM-YYYY (e.g., "25-12-2023").
+Config.MonthDayYear = true    -- USA style: MM-DD-YYYY (e.g., "12-25-2023").
+Config.YearMonthDay = false   -- ISO style: YYYY-MM-DD (e.g., "2023-12-25").
+Config.YearDayMonth = false   -- Alternative: YYYY-DD-MM (e.g., "2023-25-12").
 
--- Timezone Adjustment
-Config.TimezoneOffset = 0     -- Offset in hours (e.g., -1 for EST, +1 for CET)
--- Note: Adjust based on your server's location for accurate display.
+-- Timezone Adjustment Section
+-- Adjust the time to match your server's timezone for accurate real-life sync.
+Config.TimezoneOffset = 0     -- Number of hours to offset (e.g., -5 for EST, +1 for CET).
+-- This applies to the server's time before sending to clients.
 
--- Validation Function (Do not modify)
+-- Validation Function
+-- This function ensures config integrity by checking that only one option per category is true.
+-- It prints warnings and defaults if misconfigured. Do not modify unless you know what you're doing.
 function Config.Validate()
+    -- Check date format options
     local dateOptions = {Config.DayMonthYear, Config.MonthDayYear, Config.YearMonthDay, Config.YearDayMonth}
     local trueCount = 0
     for _, v in ipairs(dateOptions) do
@@ -42,6 +51,7 @@ function Config.Validate()
         Config.YearDayMonth = false
     end
 
+    -- Check time display options
     local timeOptions = {Config.ShowDateAndTime, Config.ShowOnlyDate, Config.ShowOnlyTime}
     trueCount = 0
     for _, v in ipairs(timeOptions) do
@@ -55,7 +65,9 @@ function Config.Validate()
     end
 end
 
--- Cached Config Values (Do not modify)
+-- Cached Config Values
+-- This table stores copies of config values for faster access, reducing performance overhead.
+-- Updated automatically on load. Do not modify manually.
 Config.Cached = {
     ShowServerName = Config.ShowServerName,
     ServerName = Config.ServerName,
@@ -72,6 +84,9 @@ Config.Cached = {
 }
 
 -- Run Validation
+-- Executes the validation function to ensure config is correct.
 Config.Validate()
 
--- Shameless Plug: Check out JGN Network for top-tier FiveM resources and join JRP for epic roleplay!
+-- Shameless Plug
+-- Check out JGN Network for top-tier FiveM resources, custom scripts, and join JRP for epic roleplay adventures!
+-- Visit justiceerp.xyz or discord.gg/JRP for more. Made with ❤️ by the JGN Team.

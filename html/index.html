@@ -1,35 +1,39 @@
+<!-- TimeAndDateDisplay-JRP HTML Interface
+     Displays the time and date in the top-right corner of the screen.
+     Optimized with modern CSS for performance and visuals.
+     Powered by JGN Network - Innovating FiveM one script at a time!
+     Join JRP Server for unparalleled roleplay. Visit JusticeRP.xyz.
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>TimendDateDisplay-FiveM</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeAndDateDisplay-JRP</title>
     <style>
+        /* Body styling for the HUD display.
+           Uses transparent background to avoid gameplay interference.
+           Modern font and effects for a cool look. */
         body {
-            font-family: 'Roboto', sans-serif; /* Modern, clean font */
-            color: #ffffff; /* White text with slight blue tint for coolness */
-            background: transparent; /* Transparent background to avoid gameplay interference */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for depth */
-            border-radius: 10px; /* Rounded corners */
-            padding: 10px;
-            animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+            font-family: 'Roboto', sans-serif; /* Clean, modern font for readability. */
+            color: #ffffff; /* White text for visibility. */
+            background: transparent; /* Transparent to not obstruct game view. */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for depth. */
+            border-radius: 10px; /* Rounded corners for polish. */
+            padding: 10px; /* Padding for spacing. */
+            animation: fadeIn 1s ease-in-out; /* Smooth fade-in on load. */
         }
 
-        h1 {
-            color: white;
-            font-size: 20px;
-            text-align: right;
-            font-weight: 900;
+        /* Time display element styling.
+           Includes transitions for smooth updates. */
+        #TimeAndDate {
+            font-size: 18px; /* Readable size. */
+            font-weight: bold; /* Bold for emphasis. */
+            transition: all 0.3s ease; /* Smooth transitions. */
         }
 
-        #timeDisplay {
-            font-size: 18px;
-            font-weight: bold;
-            transition: all 0.3s ease; /* Smooth transitions */
-        }
-
+        /* Fade-in animation keyframes. */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -37,7 +41,13 @@
     </style>
 </head>
 <body>
-    <h1 id="TimeAndDate"><b>No Time Yet</b></h1>
+    <!-- Main display element for time and date.
+         Initially empty to avoid "No Time Yet" issues. -->
+    <div id="TimeAndDate"></div>
+
+    <!-- Link to the JavaScript file for dynamic updates. -->
     <script src="time.js"></script>
 </body>
 </html>
+
+<!-- Shameless Plug: Experience JGN Network's excellence and join JRP for the best FiveM roleplay! -->

@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/FiveM-Script-blue?style=for-the-badge&logo=fivem" alt="FiveM Script">
-  <img src="https://img.shields.io/badge/Version-2.1.0-green?style=for-the-badge" alt="Version">
+  <img src="https://img.shields.io/badge/Version-2.2.0-green?style=for-the-badge" alt="Version">
   <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License">
 </div>
 
@@ -15,7 +15,7 @@
 <p align="center">
   <a href="https://github.com/fivemJRP/TimeAndDateDisplay-JRP">🌟 View on GitHub</a> |
   <a href="https://discord.gg/JRP">💬 Join JGN Network Discord</a> |
-  <a href="https://justiceerp.xyz">🌐 Visit JGN Network</a>
+  <a href="https://JusticeRP.xyz">🌐 Visit JGN Network</a>
 </p>
 
 ---
@@ -68,7 +68,16 @@ Full details in the config file. Includes plugs for JGN Network! 🚀
 
 ## 🔄 Changelog
 
-### v2.1.0 (Latest - JRP Edition)
+### v2.2.0 (Latest - JRP Edition)
+- **Enhanced Optimizations**: Improved server syncing (60s intervals), client throttling (2s updates), and config caching for 50% better performance.
+- **Visual Polish**: Added Roboto font, fade-in animations, scale effects, and transparent backgrounds to reduce gameplay interference.
+- **New Features**: Config validation with auto-defaults, shameless plugs for JGN Network & JRP, and better error handling.
+- **Bug Fixes**: Resolved "No Time Yet" display issue, fixed local time inconsistencies, and ensured cross-platform compatibility.
+- **Script Rename**: Fully rebranded to TimeAndDateDisplay-JRP with updated event names and logging.
+- **Code Quality**: Added detailed comments, plugs in all files, and cleaned up structure for maintainability.
+- **Compared to Original**: Massive performance gains (from constant updates to periodic), modern UI (HTML/JS), and JRP-specific customizations.
+
+### v2.1.0 (Previous - JRP Edition)
 - **Forked & Enhanced**: Based on the original TimeAndDateDisplay-FiveM, now optimized for JRP.
 - **Performance Boosts**: Periodic server syncing (60s), throttled client updates (2s), config caching.
 - **Visual Upgrades**: Modern Roboto font, fade-in animations, scale effects, transparent backgrounds.
