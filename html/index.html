@@ -16,10 +16,13 @@
            Uses transparent background to avoid gameplay interference.
            Modern font and effects for a cool look. */
         body {
+            position: absolute; /* Position the UI in the top-right corner. */
+            top: 10px; /* Distance from top. */
+            right: 10px; /* Distance from right. */
             font-family: 'Roboto', sans-serif; /* Clean, modern font for readability. */
             color: #ffffff; /* White text for visibility. */
-            background: transparent; /* Transparent to not obstruct game view. */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for depth. */
+            background: transparent; /* Fully transparent background as requested. */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Shadow for depth to ensure visibility. */
             border-radius: 10px; /* Rounded corners for polish. */
             padding: 10px; /* Padding for spacing. */
             animation: fadeIn 1s ease-in-out; /* Smooth fade-in on load. */
@@ -42,7 +45,7 @@
 </head>
 <body>
     <!-- Main display element for time and date.
-         Initially empty to avoid "No Time Yet" issues. -->
+         Initially empty for transparency. -->
     <div id="TimeAndDate"></div>
 
     <!-- Link to the JavaScript file for dynamic updates. -->

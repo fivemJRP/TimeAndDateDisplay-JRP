@@ -45,15 +45,43 @@ Citizen.CreateThread(function()
         
         -- Get the current server time, adjusted by the timezone offset from config.
         -- Uses os.date for accurate real-life time.
-        local time = os.date("%d-%m-%Y %H:%M", os.time() + (Config.TimezoneOffset * 3600))
+        local now = os.date("*t", os.time() + (Config.TimezoneOffset * 3600))
+        
+        -- Format the time and date based on config options.
+        local timeStr = ""
+        if Config.ShowDateAndTime then
+            if Config.MonthDayYear then
+                timeStr = string.format("%02d-%02d-%04d %02d:%02d", now.month, now.day, now.year, now.hour, now.min)
+            elseif Config.DayMonthYear then
+                timeStr = string.format("%02d-%02d-%04d %02d:%02d", now.day, now.month, now.year, now.hour, now.min)
+            elseif Config.YearMonthDay then
+                timeStr = string.format("%04d-%02d-%02d %02d:%02d", now.year, now.month, now.day, now.hour, now.min)
+            elseif Config.YearDayMonth then
+                timeStr = string.format("%04d-%02d-%02d %02d:%02d", now.year, now.day, now.month, now.hour, now.min)
+            end
+        elseif Config.ShowOnlyDate then
+            if Config.MonthDayYear then
+                timeStr = string.format("%02d-%02d-%04d", now.month, now.day, now.year)
+            elseif Config.DayMonthYear then
+                timeStr = string.format("%02d-%02d-%04d", now.day, now.month, now.year)
+            elseif Config.YearMonthDay then
+                timeStr = string.format("%04d-%02d-%02d", now.year, now.month, now.day)
+            elseif Config.YearDayMonth then
+                timeStr = string.format("%04d-%02d-%02d", now.year, now.day, now.month)
+            end
+        elseif Config.ShowOnlyTime then
+            timeStr = string.format("%02d:%02d", now.hour, now.min)
+        end
         
         -- Send the formatted time to all clients via a network event.
         -- Event name updated to 'TimeAndDateDisplay-JRP' for branding.
-        TriggerClientEvent('TimeAndDateDisplay-JRP', -1, time)
+        TriggerClientEvent('TimeAndDateDisplay-JRP', -1, timeStr)
         
         -- Log the sync for debugging and monitoring.
         -- Helps track if the script is running correctly.
-        print("[TimeAndDateDisplay-JRP] Time synced at " .. time)
+        if Config.Debug then
+            print("[TimeAndDateDisplay-JRP] Time synced at " .. timeStr)
+        end
     end
 end)
 

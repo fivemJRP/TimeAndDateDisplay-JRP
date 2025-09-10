@@ -33,6 +33,10 @@ Config.YearDayMonth = false   -- Alternative: YYYY-DD-MM (e.g., "2023-25-12").
 Config.TimezoneOffset = 0     -- Number of hours to offset (e.g., -5 for EST, +1 for CET).
 -- This applies to the server's time before sending to clients.
 
+-- Debug Mode Section
+-- Enable for troubleshooting logs in console. Set to false for production.
+Config.Debug = false          -- Set to true to enable debug prints and logs.
+
 -- Validation Function
 -- This function ensures config integrity by checking that only one option per category is true.
 -- It prints warnings and defaults if misconfigured. Do not modify unless you know what you're doing.
@@ -80,7 +84,8 @@ Config.Cached = {
     MonthDayYear = Config.MonthDayYear,
     YearMonthDay = Config.YearMonthDay,
     YearDayMonth = Config.YearDayMonth,
-    TimezoneOffset = Config.TimezoneOffset
+    TimezoneOffset = Config.TimezoneOffset,
+    Debug = Config.Debug  -- Added for debug mode caching.
 }
 
 -- Run Validation

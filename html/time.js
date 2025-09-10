@@ -14,11 +14,10 @@ function updateTime() {
     const now = new Date();
     
     // Add a subtle scale animation on updates for visual appeal.
-    const timeElement = document.getElementById('timeDisplay');
-    if (timeElement) {
-        timeElement.style.transform = 'scale(1.05)'; // Slight zoom effect.
+    if (TimeAndDate && TimeAndDate.innerText) {
+        TimeAndDate.style.transform = 'scale(1.05)'; // Slight zoom effect.
         setTimeout(() => {
-            timeElement.style.transform = 'scale(1)'; // Reset after animation.
+            TimeAndDate.style.transform = 'scale(1)'; // Reset after animation.
         }, 200);
     }
     
@@ -34,6 +33,9 @@ window.addEventListener('message', (event) => {
     if (data.action == 'setTimeAndDate') {
         // Update the inner text with the formatted time string.
         TimeAndDate.innerText = data.time;
+        if (data.debug) {
+            console.log('Time updated:', data.time); // Debug log for troubleshooting.
+        }
     }
 });
 

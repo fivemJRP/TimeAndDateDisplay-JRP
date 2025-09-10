@@ -28,8 +28,12 @@ AddEventHandler('TimeAndDateDisplay-JRP', function(time)
     -- Uses SendNUIMessage for efficient UI updates.
     SendNUIMessage({
         action = "setTimeAndDate",
-        time = time
+        time = time,
+        debug = Config.Cached.Debug  -- Pass debug flag to JS
     })
+    if Config.Cached.Debug then
+        print("[TimeAndDateDisplay-JRP] Sent time to NUI: " .. time) -- Debug print for client-side troubleshooting.
+    end
 end)
 
 -- Shameless Plug: Check out JGN Network for cutting-edge FiveM scripts and join JRP for legendary roleplay!
